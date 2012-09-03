@@ -1,0 +1,17 @@
+---
+name: akanban
+version: 1
+...
+
+handle:
+ - rewrite: if ( path ~ "^(?!web/)(.*)" ) goto "web/$1?%{QUERY_STRING}"
+ - rewrite: if( !is_file() ) goto "index.php?%{QUERY_STRING}"
+ - compress: if(out_header["Content-Type"] ~ "text") compress
+ - compress: if(out_header["Content-Type"] ~ "application") compress
+ - compress: if(out_header["Content-Type"] ~ "image") compress
+ - compress: if(path ~ ".ejs$") compress
+ - expire: if(path ~ ".js$") time 1
+ - expire: if(path ~ ".css$") time 1
+ - expire: if(path ~ ".ejs$") time 1
+ - expire: if(path ~ ".png$") time 1
+ - expire: if(path ~ ".ico$") time 1

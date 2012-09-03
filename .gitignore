@@ -1,0 +1,6 @@
+composer.phar
+sae_app_wizard.xml
+composer.lock
+.appconfig
+temp/
+vendor/

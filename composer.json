@@ -1,0 +1,12 @@
+{
+    "name": "sae/localsale",
+    "autoload": {
+        "psr-0": { "": "src/" }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "silex/silex": "1.0.*",
+        "monolog/monolog": ">=1.0.0",
+        "symfony/security": "2.1.*"
+    }
+}

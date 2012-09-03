@@ -1,0 +1,376 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title></title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+            font: 12px/1.231 Arial;
+        }
+    </style>
+
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+
+    <link rel=stylesheet href="css/style.css">
+    <script data-main="js/main" src="js/libs/require.js"></script>
+    <script src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a
+    different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>
+    to experience this site.</p><![endif]-->
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="#">A KanBan</a>
+            <div class="btn-group pull-right">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="icon-user"></i> Username
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Profile</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Sign Out</a></li>
+                </ul>
+            </div>
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li id="nav-home"><a href="#">Home</a></li>
+                    <li id="nav-about"><a href="#!about">About</a></li>
+                    <li id="nav-contact"><a href="#!contact">Contact</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
+
+<noscript class="container noscript">
+    <p>本网站需要客户端启用 JavaScript，请启用浏览器的 JavaScript 或使用其他支持 JavaScript 的浏览器。</p>
+</noscript>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        <div id="new_task_modal" class="modal hide fade" title="Create new task">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Create New Task</h3>
+            </div>
+
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label" for="new_task_modal_title">Title</label>
+                        <div class="controls">
+                            <input type="text" id="new_task_modal_title" placeholder="Task Title">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Urgent</label>
+                        <div class="controls">
+                        <label class="checkbox">
+                            <input type="checkbox" id="new_task_modal_urgent"> Mark this task as urgent
+                        </label>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">blocked</label>
+                        <div class="controls">
+                        <label class="checkbox">
+                            <input type="checkbox" id="new_task_modal_blocked"> Mark this task as blocked
+                        </label>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Step</label>
+                        <div class="controls">
+                            <select id="new_task_modal_step">
+                                <option value="Planning">Planning</option>      
+                                <option value="Design">Design</option>
+                                <option value="Developing">Developing</option>
+                                <option value="Testing">Testing</option>
+                                <option value="Released">Released</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Color</label>
+                        <div class="controls">
+                            <select id="new_task_modal_color">
+                                <option value="default">default</option>      
+                                <option value="blue">blue</option>
+                                <option value="brown">brown</option>
+                                <option value="green">green</option>
+                                <option value="orange">orange</option>
+                                <option value="red">red</option>
+                                <option value="yellow">yellow</option>
+                                <option value="pruple">pruple</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="new_task_modal_person">Person</label>
+                        <div class="controls">
+                            <input type="text" id="new_task_modal_person" >
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="new_task_modal_tag">Tag</label>
+                        <div class="controls">
+                            <input type="text" id="new_task_modal_tag" >
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="new_task_modal_notes">Notes</label>
+                        <div class="controls">
+                            <textarea type="text" id="new_task_modal_notes" placeholder="Task Notes"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <a href="#" class="btn btn-primary" id="new_task_modal_submit" data-bind="click: newTask">Save changes</a>
+            </div>
+        </div>
+
+
+        <div id="edit_task_modal" class="modal hide fade" title="Create new task">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Edit Task</h3>
+            </div>
+
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <input type="hidden" id="edit_task_modal_id">
+                    <input type="hidden" id="edit_task_modal_step">
+                    <input type="hidden" id="edit_task_modal_place">
+                    <div class="control-group">
+                        <label class="control-label" for="edit_task_modal_title">Title</label>
+                        <div class="controls">
+                            <input type="text" id="edit_task_modal_title" placeholder="Task Title">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Urgent</label>
+                        <div class="controls">
+                        <label class="checkbox">
+                            <input type="checkbox" id="edit_task_modal_urgent"> Mark this task as urgent
+                        </label>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">blocked</label>
+                        <div class="controls">
+                        <label class="checkbox">
+                            <input type="checkbox" id="edit_task_modal_blocked"> Mark this task as blocked
+                        </label>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Color</label>
+                        <div class="controls">
+                            <select id="edit_task_modal_color">
+                                <option value="default">default</option>      
+                                <option value="blue">blue</option>
+                                <option value="brown">brown</option>
+                                <option value="green">green</option>
+                                <option value="orange">orange</option>
+                                <option value="red">red</option>
+                                <option value="yellow">yellow</option>
+                                <option value="pruple">pruple</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="edit_task_modal_person">Person</label>
+                        <div class="controls">
+                            <input type="text" id="edit_task_modal_person" >
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="edit_task_modal_tag">Tag</label>
+                        <div class="controls">
+                            <input type="text" id="edit_task_modal_tag" >
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="edit_task_modal_notes">Notes</label>
+                        <div class="controls">
+                            <textarea type="text" id="edit_task_modal_notes" placeholder="Task Notes"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <a href="#" class="btn btn-primary" id="edit_task_modal_delete" data-bind="click: deleteTask">Delete This Task</a>
+                <a href="#" class="btn btn-primary" id="edit_task_modal_submit" data-bind="click: editTask">Save changes</a>
+            </div>
+        </div>
+
+        <!-- search form and tag filter -->
+        <form class="form-inline" id="top-form" data-bind="submit: createTask">  
+            <div id="newtaskblock" class="input-prepend input-append pull-left">
+                <span class="add-on">Add a new Ticket: </span>
+                <input id="newtask" class="input-xxlarge" type="text" size="56" placeholder="ticket name  #Planning  @username  $tag1  $tag2  %color  =v0.1  ^">
+                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#new_task_modal"><i class="icon-plus icon-white"></i></button>
+                <!-- <button class="btn" type="button"><i class="icon-question-sign"></i></button> -->
+            </div>
+
+            <ul id="color-swatch" class="pull-left" title="Drag and drop a color on top of a task to color it.">
+                <li class="color-swatch default ui-draggable" data-color="clear" title="This one clears the color on a task"></li>
+                <li class="blue color-swatch ui-draggable" data-color="blue" id="c-blue"></li>
+                <li class="brown color-swatch ui-draggable" data-color="brown" id="c-brown"></li>
+                <li class="color-swatch green ui-draggable" data-color="green" id="c-green"></li>
+                <li class="color-swatch orange ui-draggable" data-color="orange" id="c-orange"></li>
+                <li class="color-swatch red ui-draggable" data-color="red" id="c-red"></li>
+                <li class="color-swatch yellow ui-draggable" data-color="yellow" id="c-yellow"></li>
+                <li class="color-swatch purple ui-draggable" data-color="purple" id="c-purple"></li>
+                <li class="color-swatch system ui-draggable" data-color="!" title="Mark this task as urgent"><span>!</span></li>
+            </ul>   
+
+            <div class="search pull-left" id="searchbox">
+                <input type="text" class="input-medium search-query">
+                <button type="submit" class="btn btn-primary"><i class="icon-search"></i></button>
+
+                <select id="fileter-by-user">
+                    <option selected="true">filter by user</option>
+                    <option value="">user1</option>
+                    <option value="">user2</option>
+                </select>
+
+                <select id="fileter-by-tags">
+                    <option selected="true">filter by version</option>
+                    <option value="">0.1</option>
+                    <option value="">0.2</option>
+                </select>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="row-fluid">
+    </div>
+
+
+    <div id="steps" class="row-fluid hide" data-bind="foreach: columns">
+
+        <div data-bind="attr: { 'class': cssClass}">
+            <header>
+                <h1 class="edit-step">
+                    <em class="step-name" data-bind="text: title"></em>
+                    <div class="tasks_limit"></div>
+                    <div class="tasks_count">0</div>
+                    <span class="actions">
+                        <a class="edit-step-link" data-bind="click: showEditStepModal">
+                            <img class="default" src="/img/iconic/gray_light/pen_12x12.png" title="Edit Column">
+                            <img class="hover" src="/img/iconic/black/pen_12x12.png" title="Edit Column">
+                        </a>
+                        <a class="edit-step-link" data-bind="click: showNewTaskModal">
+                            <img class="default" src="/img/iconic/gray_light/plus_12x12.png" title="Add Task">
+                            <img class="hover" src="/img/iconic/black/plus_12x12.png" title="Add Task">
+                        </a>
+                    </span>
+                </h1>
+            </header>
+
+            <section class="edit-queue status">
+                <h1 class="name empty">
+                    <span>Queue</span>
+                </h1>
+                <!-- <ul class="kan ui-sortable" data-bind="sortable: { data: kan, allowDrop: true, afterMove: afterMove }">       -->
+                <ul class="kan ui-sortable" data-bind="attr: {'id': kanId}, sortable: { data: kan, allowDrop: true, afterMove: afterMove }">
+                    <li data-bind="attr: { 'class': cssClass, 'id': id, 'title': notes },  event: { dblclick: showEditTaskModal }">
+<!--                         <div class="user">
+                            <img src="https://secure.gravatar.com/avatar/06ca2cbb11fbfbff83e5f2baa65eb737?s=20">
+                        </div> -->
+                        <div class="task-details">
+                            <p class="title" data-bind="text: title"></p>
+                            <span class="asignee" data-bind="text: asignee"></span>
+                            <p>
+                                <span class="detail" data-bind="text: shortNotes"></span>
+                            </p>
+                            <p class="actions">
+                                <a class="edit-task" href="#">
+                                    <span class="gear">&nbsp;</span>
+                                </a>
+                                <a class="edit-task commented" href="#">
+                                    <span class="comment"></span>
+                                </a>
+                            </p>
+                            <span class="asignee" data-bind="text: tag"></span>
+                            <span class="task-id" data-bind="text: screenId"></span>
+                        </div>
+                        <div class="blocked-icon">&nbsp;</div>
+                        <div class="urgent-icon">&nbsp;</div>
+                        <div class="blocked-urgent-icon">&nbsp;</div>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="edit-queue status">
+                <h1 class="edit-wip-name edit-wip-title title empty">
+                    <span>In-Progress</span>
+                </h1>
+                <!-- <ul class="ban ui-sortable" data-bind="sortable: { data: ban, allowDrop: true }">                  -->                
+                <ul class="kan ui-sortable" data-bind="attr: {'id': banId}, sortable: { data: ban, allowDrop: true, afterMove: afterMove }">
+                    <li data-bind="attr: { 'class': cssClass, 'id': id, 'title': notes },  event: { dblclick: showEditTaskModal }">
+<!--                         <div class="user">
+                            <img src="https://secure.gravatar.com/avatar/06ca2cbb11fbfbff83e5f2baa65eb737?s=20">
+                        </div> -->
+                        <div class="task-details">
+                            <p class="title" data-bind="text: title"></p>
+                            <span class="tag" data-bind="text: asignee"></span>
+                            <p>
+                                <span class="detail" data-bind="text: shortNotes"></span>
+                            </p>
+                            <p class="actions">
+                                <a class="edit-task" href="#">
+                                    <span class="gear">&nbsp;</span>
+                                </a>
+                                <a class="edit-task commented" href="#">
+                                    <span class="comment"></span>
+                                </a>
+                            </p>
+                            <span class="tag" data-bind="text: tag"></span>
+                            <span class="task-id" data-bind="text: screenId"></span>
+                        </div>
+                        <div class="blocked-icon">&nbsp;</div>
+                        <div class="urgent-icon">&nbsp;</div>
+                        <div class="blocked-urgent-icon">&nbsp;</div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+</div>
+<!-- /container -->
+
+</body>
+</html>

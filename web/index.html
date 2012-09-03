@@ -1,0 +1,134 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title></title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+
+    <link rel=stylesheet href="css/home_style.css">
+    <script data-main="js/main" src="js/libs/jquery-1.8.0.min.js"></script>
+    <script data-main="js/main" src="js/libs/bootstrap.min.js"></script>
+    <script src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a
+    different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>
+    to experience this site.</p><![endif]-->
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container"><!-- Collapsable nav bar -->
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+        
+            <!-- Start of the nav bar content -->
+            <div class="nav-collapse"><!-- Other nav bar content -->
+                <ul class="nav">
+                    <li id="nav-home"><a href="#">Home</a></li>
+                    <li id="nav-about"><a href="#!about">About</a></li>
+                    <li id="nav-contact"><a href="#!contact">Contact</a></li>
+                </ul>
+
+                <!-- The drop down menu -->
+                <ul class="nav pull-right">
+                    <li><a href="/kanban.html">Try Demo</a></li>
+                    <li class="divider-vertical"></li>
+                    <li class="drop down">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+                        <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+
+                            <form action="[YOUR ACTION]" method="post" accept-charset="UTF-8" id="login_form">
+                                <input id="user_username" style="margin-bottom: 15px;" type="text" name="user[username]" placeholder="username" size="30" />
+                                <input id="user_password" style="margin-bottom: 15px;" type="password" name="user[password]" placeholder="password" size="30" />
+                                <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
+                                <label class="string optional" for="user_remember_me"> Remember me</label>
+
+                                <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In" />
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+                <!-- End of The drop down menu -->
+
+            </div>            
+            <!-- End of the nav bar content -->
+
+        </div>
+    </div>
+</div>
+
+
+
+<noscript class="container noscript">
+    <p>本网站需要客户端启用 JavaScript，请启用浏览器的 JavaScript 或使用其他支持 JavaScript 的浏览器。</p>
+</noscript>
+
+<div class="jumbotron masthead">
+    <div class="container">
+        <img src="img/img2.jpg">
+        <p><a href="kanban.html" class="btn btn-primary btn-large">Try a Demo</a></p>        
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="marketing">
+        <h1>A KanBan.</h1>
+        <p class="marketing-byline">用最清晰简洁的方式来管理你的任务!</p>
+        <div class="row-fluid">
+            <div class="span4">
+                <h2>看板管理.</h2>
+                <p>最初由丰田公司在20世纪40年代作为他们的精益生产系统的一部分而提出。今天看板被广泛用于敏捷软件开发和在其他领域，并越来越受欢迎。</p>
+            </div>
+            <div class="span4">
+                <h2>A Kanban.</h2>
+                <p>A Kanban 的目标是将传统的以白板方式进行的项目任务管理移到网上。配合颜色、标签、委派、评论等功能更加直观、有效的进行项目管理。</p>
+            </div>
+            <div class="span4">
+                <h2>开源项目.</h2>
+                <p>代码协议<a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>、文档协议<a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></p>
+                <p>这意味着你可以免费使用 A Kanban。项目正在进行中，欢迎加入并贡献你的力量。</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /container -->
+
+<footer class="footer">
+    <div class="container">
+        <p class="pull-right"><a href="#">返回页面顶端</a></p>
+        <p>Designed and built by <a href="" target="_blank">@fraispy</a>.</p>
+<!--         <ul class="footer-links">
+            <li><a href="#">Read the blog</a></li>
+            <li><a href="#">Submit issues</a></li>
+            <li><a href="#">Roadmap and changelog</a></li>
+        </ul> -->
+    </div>
+</footer>
+
+
+<script type="text/javascript">
+$(function() {
+    // Fix input element click problem
+    $('#login_form input, #login_form label').click(function(e) {
+        e.stopPropagation();
+    });
+});
+</script>
+
+</body>
+</html>
